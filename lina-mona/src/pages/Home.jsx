@@ -4,8 +4,9 @@ import { motion } from 'framer-motion';
 import { ArrowRight, Scissors, Eye, Sparkles, Calendar } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-import heroImg from '../assets/hero.png';
-import browsImg from '../assets/brows.png';
+import heroImg from '../assets/institue1.webp';
+import aboutImg from '../assets/lashes.png'; // Reverting this to lashes or something to reuse 'institue3.webp' elsewhere
+import ctaImg from '../assets/institue3.webp';
 
 const fadeIn = {
     hidden: { opacity: 0, y: 30 },
@@ -143,7 +144,7 @@ const Home = () => {
                         <motion.div
                             initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}
                         >
-                            <img src={browsImg} alt="Sublime Eyebrows" className="about-img" />
+                            <img src={aboutImg} alt="Institut Lina Mona" className="about-img" style={{ objectFit: 'cover', borderRadius: '30px' }} />
                         </motion.div>
 
                         <motion.div
@@ -171,17 +172,31 @@ const Home = () => {
                 </div>
             </section>
 
-            <section className="cta-banner">
-                <div className="container">
+            <section className="cta-banner" style={{ padding: 0, overflow: 'hidden' }}>
+                <div style={{ display: 'flex', flexWrap: 'wrap' }}>
+
+                    {/* Image side */}
                     <motion.div
                         initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}
+                        style={{ flex: '1 1 50%', minHeight: '400px' }}
                     >
-                        <h2>Prête à révéler votre beauté ?</h2>
-                        <p>Réservez votre créneau en quelques clics via Planity. Nocturnes jusqu'à minuit disponibles.</p>
-                        <a href={bookingUrl} target="_blank" rel="noreferrer" className="btn-secondary">
-                            Voir les disponibilités <Calendar size={18} />
-                        </a>
+                        <img src={ctaImg} alt="Lina Mona Institut Beauté" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                     </motion.div>
+
+                    {/* Content side */}
+                    <motion.div
+                        initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}
+                        style={{ flex: '1 1 50%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'flex-start', padding: '6rem 4rem', textAlign: 'left', backgroundColor: 'var(--primary)' }}
+                    >
+                        <motion.h2 variants={fadeIn} style={{ fontSize: '3rem', marginBottom: '1.5rem', color: '#fff' }}>Prête à révéler votre beauté ?</motion.h2>
+                        <motion.p variants={fadeIn} style={{ fontSize: '1.1rem', marginBottom: '2.5rem', opacity: 0.9, color: '#fff' }}>
+                            Réservez votre créneau en quelques clics via Planity.<br />Nocturnes jusqu'à minuit disponibles.
+                        </motion.p>
+                        <motion.a variants={fadeIn} href={bookingUrl} target="_blank" rel="noreferrer" className="btn-secondary" style={{ padding: '1.2rem 2.5rem' }}>
+                            Voir les disponibilités <Calendar size={18} />
+                        </motion.a>
+                    </motion.div>
+
                 </div>
             </section>
         </>
