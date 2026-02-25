@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import browsImg from '../assets/brows.png';
 import lashesImg from '../assets/lashes.png';
@@ -19,6 +20,10 @@ const staggerContainer = {
 const About = () => {
     return (
         <div style={{ paddingTop: '100px', backgroundColor: 'var(--background)' }}>
+            <Helmet>
+                <title>À Propos & Philosophie | Lina Mona Institut</title>
+                <meta name="description" content="Découvrez Lina Mona, l'expertise et la philosophie de notre LM TEAM. Formées aux méthodes les plus rigoureuses pour l'art de la beauté du regard sur-mesure." />
+            </Helmet>
             <section className="section" style={{ paddingBottom: '2rem' }}>
                 <div className="container">
                     <motion.div

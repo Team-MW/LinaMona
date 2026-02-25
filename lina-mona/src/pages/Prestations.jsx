@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { Calendar, Info } from 'lucide-react';
 import lashesImg from '../assets/lashes.png';
@@ -21,6 +22,10 @@ const Prestations = () => {
 
     return (
         <div style={{ paddingTop: '80px', backgroundColor: 'var(--background)' }}>
+            <Helmet>
+                <title>Prestations & Tarifs | Lina Mona Toulouse</title>
+                <meta name="description" content="Découvrez notre carte de prestations chez Lina Mona : tarifs pour Browlift, Rehaussement de cils, Lash Lift, Microblading, Shading et maquillage permanent à Toulouse." />
+            </Helmet>
             {/* Page Header */}
             <section className="section" style={{ paddingBottom: '2rem' }}>
                 <div className="container" style={{ textAlign: 'center' }}>

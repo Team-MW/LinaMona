@@ -160,6 +160,57 @@ nav {
   display: none;
 }
 
+/* MOBILE NAV */
+.mobile-toggle {
+  display: none;
+  cursor: pointer;
+  color: var(--accent);
+}
+
+.mobile-menu {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background-color: var(--background);
+  padding: 2rem;
+  gap: 1.5rem;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  transform: translateY(-20px);
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+  z-index: -1;
+}
+
+.mobile-menu.open {
+  transform: translateY(0);
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.mobile-menu a {
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: var(--accent);
+  text-transform: uppercase;
+  text-decoration: none;
+  text-align: center;
+}
+
+.book-btn-mobile {
+  background-color: var(--accent);
+  color: #fff !important;
+  padding: 1rem;
+  border-radius: 30px;
+  text-align: center;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin-top: 1rem;
+}
+
 /* HERO */
 .hero {
   height: 100vh;
@@ -519,6 +570,10 @@ footer {
 
   .nav-links {
     display: none;
+  }
+
+  .mobile-toggle {
+    display: block;
   }
 
   .footer-grid {

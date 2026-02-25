@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { ArrowRight, Scissors, Eye, Sparkles, Calendar } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -43,6 +44,10 @@ const Home = () => {
 
     return (
         <>
+            <Helmet>
+                <title>Lina Mona | Institut de Beauté & Expert du Regard à Toulouse</title>
+                <meta name="description" content="Découvrez Lina Mona, institut de beauté premium situé à Toulouse, spécialisé dans la beauté du regard : Browlift, Rehaussement de cils, Microblading, Shading." />
+            </Helmet>
             <section className="hero">
                 <div className="hero-img-container">
                     <img src={heroImg} alt="Lina Mona Salon" />

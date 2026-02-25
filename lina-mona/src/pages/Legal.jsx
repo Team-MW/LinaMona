@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 
 const fadeIn = {
@@ -9,6 +10,10 @@ const fadeIn = {
 const Legal = () => {
     return (
         <div style={{ paddingTop: '120px', paddingBottom: '80px', backgroundColor: 'var(--background)', minHeight: '80vh' }}>
+            <Helmet>
+                <title>Mentions Légales | Lina Mona</title>
+                <meta name="robots" content="noindex, nofollow" />
+            </Helmet>
             <div className="container" style={{ maxWidth: '800px' }}>
                 <motion.div initial="hidden" animate="visible" variants={fadeIn}>
                     <h1 style={{ fontSize: '2.5rem', marginBottom: '1rem', textAlign: 'center' }}>Mentions Légales</h1>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { MapPin, Navigation, Clock, Calendar } from 'lucide-react';
 
@@ -20,6 +21,10 @@ const Contact = () => {
 
     return (
         <div style={{ paddingTop: '100px', backgroundColor: 'var(--background)' }}>
+            <Helmet>
+                <title>Contact & Réservation | Lina Mona Toulouse</title>
+                <meta name="description" content="Prenez rendez-vous avec la LM TEAM. Coordonnées de l'Institut Lina Mona, adresse à Toulouse (Port Saint-Sauveur) et révervations Planity 20h-minuit." />
+            </Helmet>
             <section className="section">
                 <div className="container">
                     <motion.div
