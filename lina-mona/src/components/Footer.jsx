@@ -17,6 +17,7 @@ const Footer = () => {
                             <Link to="/prestations" style={{ color: 'rgba(255,255,255,0.7)', textDecoration: 'none' }}>Prestations</Link>
                             <Link to="/a-propos" style={{ color: 'rgba(255,255,255,0.7)', textDecoration: 'none' }}>À Propos</Link>
                             <Link to="/contact" style={{ color: 'rgba(255,255,255,0.7)', textDecoration: 'none' }}>Contact</Link>
+                            <Link to="/mentions-legales" style={{ color: 'rgba(255,255,255,0.7)', textDecoration: 'none', marginTop: '1rem', fontSize: '0.8rem' }}>Mentions Légales</Link>
                         </div>
                     </div>
 

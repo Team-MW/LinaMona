@@ -83,6 +83,31 @@ const About = () => {
                         </motion.div>
                     </div>
 
+                    {/* FAQ SECTION */}
+                    <motion.div
+                        initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}
+                        style={{ marginTop: '8rem', maxWidth: '800px', margin: '8rem auto 0' }}
+                    >
+                        <motion.h2 variants={fadeIn} style={{ fontSize: '2.5rem', marginBottom: '3rem', textAlign: 'center' }}>Questions Fréquentes</motion.h2>
+
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem' }}>
+                            <motion.div variants={fadeIn} style={{ backgroundColor: '#fff', padding: '2rem', borderRadius: '15px', borderLeft: '4px solid var(--primary)', boxShadow: '0 4px 15px rgba(0,0,0,0.02)' }}>
+                                <h4 style={{ fontSize: '1.2rem', marginBottom: '0.8rem', color: 'var(--accent)' }}>Combien de temps dure une séance de Microblading ?</h4>
+                                <p style={{ color: 'var(--accent-light)', margin: 0 }}>La séance initiale dure environ 1h à 1h30. Ce temps comprend la consultation, le traçage sur-mesure de votre ligne de sourcil, puis la pigmentation.</p>
+                            </motion.div>
+
+                            <motion.div variants={fadeIn} style={{ backgroundColor: '#fff', padding: '2rem', borderRadius: '15px', borderLeft: '4px solid var(--primary)', boxShadow: '0 4px 15px rgba(0,0,0,0.02)' }}>
+                                <h4 style={{ fontSize: '1.2rem', marginBottom: '0.8rem', color: 'var(--accent)' }}>Le maquillage permanent est-il douloureux ?</h4>
+                                <p style={{ color: 'var(--accent-light)', margin: 0 }}>La sensation varie d'une personne à l'autre, mais nous utilisons des techniques douces pour minimiser l'inconfort. La plupart de nos clientes décrivent la sensation comme un léger grattement.</p>
+                            </motion.div>
+
+                            <motion.div variants={fadeIn} style={{ backgroundColor: '#fff', padding: '2rem', borderRadius: '15px', borderLeft: '4px solid var(--primary)', boxShadow: '0 4px 15px rgba(0,0,0,0.02)' }}>
+                                <h4 style={{ fontSize: '1.2rem', marginBottom: '0.8rem', color: 'var(--accent)' }}>Comment annuler ou reporter mon rendez-vous ?</h4>
+                                <p style={{ color: 'var(--accent-light)', margin: 0 }}>Vous pouvez gérer votre réservation directement via votre espace personnel sur Planity, ou nous contacter par téléphone au moins 48h à l'avance.</p>
+                            </motion.div>
+                        </div>
+                    </motion.div>
+
                 </div>
             </section>
         </div>
