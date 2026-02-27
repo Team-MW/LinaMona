@@ -3,9 +3,10 @@ import { Helmet } from 'react-helmet-async';
 import { motion } from 'framer-motion';
 import { ArrowRight, Scissors, Eye, Sparkles, Calendar } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useLanguage } from '../context/LanguageContext';
 
 import heroImg from '../assets/institue1.webp';
-import aboutImg from '../assets/lashes.png'; // Reverting this to lashes or something to reuse 'institue3.webp' elsewhere
+import aboutImg from '../assets/lashes.png';
 import ctaImg from '../assets/institue3.webp';
 
 const fadeIn = {
@@ -17,9 +18,7 @@ const staggerContainer = {
     hidden: { opacity: 0 },
     visible: {
         opacity: 1,
-        transition: {
-            staggerChildren: 0.2
-        }
+        transition: { staggerChildren: 0.2 }
     }
 };
 
@@ -42,6 +41,8 @@ const Marquee = () => {
 
 const Home = () => {
     const bookingUrl = "https://www.planity.com/lina-mona-31000-toulouse";
+    const { t, language } = useLanguage();
+    const h = t.home;
 
     return (
         <>
@@ -61,19 +62,17 @@ const Home = () => {
                         initial="hidden"
                         animate="visible"
                         variants={staggerContainer}
+                        dir={language === 'ar' ? 'rtl' : 'ltr'}
                     >
-                        <motion.span variants={fadeIn} className="hero-subtitle">Institut de Beauté Premium</motion.span>
-                        <motion.h1 variants={fadeIn}>Sublimez votre beauté naturelle.</motion.h1>
-                        <motion.p variants={fadeIn}>
-                            Un véritable joyau situé au cœur de Toulouse. Spécialiste du regard,
-                            du browlift au microblading, nous sublimons votre visage avec précision et élégance.
-                        </motion.p>
-                        <motion.div variants={fadeIn} style={{ display: 'flex', gap: '1rem', marginTop: '1rem' }}>
+                        <motion.span variants={fadeIn} className="hero-subtitle">{h.heroSubtitle}</motion.span>
+                        <motion.h1 variants={fadeIn}>{h.heroTitle}</motion.h1>
+                        <motion.p variants={fadeIn}>{h.heroDesc}</motion.p>
+                        <motion.div variants={fadeIn} style={{ display: 'flex', gap: '1rem', marginTop: '1rem', flexWrap: 'wrap' }}>
                             <a href={bookingUrl} target="_blank" rel="noreferrer" className="btn-artisanal">
-                                Prendre Rendez-vous <ArrowRight size={18} />
+                                {h.heroBtn} <ArrowRight size={18} />
                             </a>
                             <Link to="/prestations" className="btn-secondary" style={{ backgroundColor: 'transparent', border: '1px solid var(--accent)' }}>
-                                Découvrir la carte
+                                {h.heroBtn2}
                             </Link>
                         </motion.div>
                     </motion.div>
@@ -88,10 +87,10 @@ const Home = () => {
                         initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}
                         style={{ textAlign: 'center', marginBottom: '4rem' }}
                     >
-                        <motion.span variants={fadeIn} className="section-subtitle">NOS SPÉCIALITÉS</motion.span>
-                        <motion.h2 variants={fadeIn} className="section-title" style={{ marginBottom: '1rem' }}>L'Art du Regard</motion.h2>
+                        <motion.span variants={fadeIn} className="section-subtitle">{h.specSubtitle}</motion.span>
+                        <motion.h2 variants={fadeIn} className="section-title" style={{ marginBottom: '1rem' }}>{h.specTitle}</motion.h2>
                         <motion.p variants={fadeIn} style={{ maxWidth: '600px', margin: '0 auto', color: 'var(--accent-light)' }}>
-                            Découvrez nos prestations phares réalisées par nos expertes pour un résultat naturel et harmonieux.
+                            {h.specDesc}
                         </motion.p>
                     </motion.div>
 
@@ -104,34 +103,34 @@ const Home = () => {
                     >
                         <motion.div variants={fadeIn} className="service-card">
                             <div className="service-icon"><Scissors size={32} /></div>
-                            <h3>Browlift & Sculpt</h3>
+                            <h3>{h.service1Title}</h3>
                             <p style={{ color: 'var(--accent-light)', marginBottom: '1.5rem', fontSize: '0.95rem' }}>
-                                Restructuration, épilation, teinture et browlift pour un regard soulevé et un sourcil parfaitement dessiné.
+                                {h.service1Desc}
                             </p>
                             <Link to="/prestations" style={{ color: 'var(--primary)', fontWeight: '500', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                                Voir les tarifs <ArrowRight size={16} />
+                                {h.seePrices} <ArrowRight size={16} />
                             </Link>
                         </motion.div>
 
                         <motion.div variants={fadeIn} className="service-card">
                             <div className="service-icon"><Eye size={32} /></div>
-                            <h3>Lash Lift Coréen</h3>
+                            <h3>{h.service2Title}</h3>
                             <p style={{ color: 'var(--accent-light)', marginBottom: '1.5rem', fontSize: '0.95rem' }}>
-                                Rehaussement de cils profond pour ouvrir le regard et donner une courbure élégante de façon prolongée.
+                                {h.service2Desc}
                             </p>
                             <Link to="/prestations" style={{ color: 'var(--primary)', fontWeight: '500', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                                Voir les tarifs <ArrowRight size={16} />
+                                {h.seePrices} <ArrowRight size={16} />
                             </Link>
                         </motion.div>
 
                         <motion.div variants={fadeIn} className="service-card">
                             <div className="service-icon"><Sparkles size={32} /></div>
-                            <h3>Maquillage Permanent</h3>
+                            <h3>{h.service3Title}</h3>
                             <p style={{ color: 'var(--accent-light)', marginBottom: '1.5rem', fontSize: '0.95rem' }}>
-                                Microblading (poil à poil), Shading (ombré) ou Combo Brows pour des sourcils parfaits sans maquillage quotidien.
+                                {h.service3Desc}
                             </p>
                             <Link to="/prestations" style={{ color: 'var(--primary)', fontWeight: '500', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                                Voir les tarifs <ArrowRight size={16} />
+                                {h.seePrices} <ArrowRight size={16} />
                             </Link>
                         </motion.div>
                     </motion.div>
@@ -141,30 +140,23 @@ const Home = () => {
             <section className="section about" style={{ padding: '8rem 0' }}>
                 <div className="container">
                     <div className="about-grid">
-                        <motion.div
-                            initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}
-                        >
+                        <motion.div initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}>
                             <img src={aboutImg} alt="Institut Lina Mona" className="about-img" style={{ objectFit: 'cover', borderRadius: '30px' }} />
                         </motion.div>
 
                         <motion.div
                             className="about-content"
                             initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}
+                            dir={language === 'ar' ? 'rtl' : 'ltr'}
                         >
-                            <motion.span variants={fadeIn} className="section-subtitle" style={{ textAlign: 'left' }}>L'EXPÉRIENCE</motion.span>
-                            <motion.h2 variants={fadeIn}>L'Élégance chez Lina Mona</motion.h2>
-                            <motion.p variants={fadeIn}>
-                                Bienvenue chez Lina Mona, votre espace dédié à la beauté du regard. Notre équipe experte (LM TEAM)
-                                vous accueille dans un cadre élégant et apaisant pour vous offrir des prestations sur-mesure.
-                            </motion.p>
-                            <motion.p variants={fadeIn}>
-                                Chaque visage est unique, c'est pourquoi nous adaptons nos techniques pour créer l'harmonie parfaite,
-                                tout en respectant votre beauté naturelle.
-                            </motion.p>
+                            <motion.span variants={fadeIn} className="section-subtitle" style={{ textAlign: language === 'ar' ? 'right' : 'left' }}>{h.experienceSubtitle}</motion.span>
+                            <motion.h2 variants={fadeIn}>{h.experienceTitle}</motion.h2>
+                            <motion.p variants={fadeIn}>{h.experienceDesc1}</motion.p>
+                            <motion.p variants={fadeIn}>{h.experienceDesc2}</motion.p>
 
                             <motion.div variants={fadeIn} style={{ marginTop: '2rem' }}>
                                 <Link to="/a-propos" className="btn-primary" style={{ backgroundColor: 'var(--primary)' }}>
-                                    Découvrir notre histoire
+                                    {h.discoverStory}
                                 </Link>
                             </motion.div>
                         </motion.div>
@@ -174,8 +166,6 @@ const Home = () => {
 
             <section className="cta-banner" style={{ padding: 0, overflow: 'hidden' }}>
                 <div style={{ display: 'flex', flexWrap: 'wrap' }}>
-
-                    {/* Image side */}
                     <motion.div
                         initial="hidden" whileInView="visible" viewport={{ once: true }} variants={fadeIn}
                         style={{ flex: '1 1 50%', minHeight: '400px' }}
@@ -183,20 +173,19 @@ const Home = () => {
                         <img src={ctaImg} alt="Lina Mona Institut Beauté" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
                     </motion.div>
 
-                    {/* Content side */}
                     <motion.div
                         initial="hidden" whileInView="visible" viewport={{ once: true }} variants={staggerContainer}
                         style={{ flex: '1 1 50%', display: 'flex', flexDirection: 'column', justifyContent: 'center', alignItems: 'flex-start', padding: '6rem 4rem', textAlign: 'left', backgroundColor: 'var(--primary)' }}
+                        dir={language === 'ar' ? 'rtl' : 'ltr'}
                     >
-                        <motion.h2 variants={fadeIn} style={{ fontSize: '3rem', marginBottom: '1.5rem', color: '#fff' }}>Prête à révéler votre beauté ?</motion.h2>
-                        <motion.p variants={fadeIn} style={{ fontSize: '1.1rem', marginBottom: '2.5rem', opacity: 0.9, color: '#fff' }}>
-                            Réservez votre créneau en quelques clics via Planity.<br />Nocturnes jusqu'à minuit disponibles.
+                        <motion.h2 variants={fadeIn} style={{ fontSize: '3rem', marginBottom: '1.5rem', color: '#fff' }}>{h.ctaTitle}</motion.h2>
+                        <motion.p variants={fadeIn} style={{ fontSize: '1.1rem', marginBottom: '2.5rem', opacity: 0.9, color: '#fff', whiteSpace: 'pre-line' }}>
+                            {h.ctaDesc}
                         </motion.p>
                         <motion.a variants={fadeIn} href={bookingUrl} target="_blank" rel="noreferrer" className="btn-secondary" style={{ padding: '1.2rem 2.5rem' }}>
-                            Voir les disponibilités <Calendar size={18} />
+                            {h.ctaBtn} <Calendar size={18} />
                         </motion.a>
                     </motion.div>
-
                 </div>
             </section>
         </>
